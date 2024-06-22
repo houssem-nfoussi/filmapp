@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import MovieList from './MovieList'
 import Navbar from './Navbar'
 
+
 const Home = ({setpage}) => {
     const [search, setsearch] = useState("")
     const [movies, setmovies] = useState([
@@ -40,11 +41,17 @@ const Home = ({setpage}) => {
             rate: 5
           },
     ])
+    const [newmovie, setnewmovie] = useState({
+        name:"",
+        description:"",
+        image:"",
+        rate:0
+    })
+    const addmovie=()=>setmovies([...movies,newmovie])
   return (
 
     <div>
-      <Navbar setsearch={setsearch} setpage={setpage} />
-      
+      <Navbar newmovie={newmovie} setnewmovie={setnewmovie} addmovie={addmovie} setsearch={setsearch} setpage={setpage} />
       <MovieList movies={movies} search={search}  />
     </div>
   )
