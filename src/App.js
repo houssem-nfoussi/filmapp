@@ -3,11 +3,15 @@ import './App.css';
 import Home from './component/Home';
 import Login from './component/Login';
 import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 function App() {
-  const [page, setpage] = useState(1)
+  
   return (
     <div className="App">
-      {page==0?<Login setpage={setpage} />:<Home setpage={setpage} />}
+      <Routes>
+        <Route path="/"element={<Login/>}/>
+        <Route path="/home"element={<Home/>}/>
+      </Routes>
     </div>
   );
 }
